@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Categories · Iverstone Verdalis Forum</title>
+  <!-- premium typography: inter & garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <!-- font-awesome (minimal icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ----- reset & base (mirrored from about/terms page) ----- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f7f3ed;
+      color: #2a2a27;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      padding: 2rem 1.5rem;
+    }
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      background: #fcf9f5;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.04);
+      border-radius: 2.5rem 2.5rem 1.5rem 1.5rem;
+      padding: 2.5rem 2.8rem;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; border-radius: 1.2rem; }
+    /* ----- brand identity : Iverstone Verdalis Forum ----- */
+    .brand {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #e0d6cb;
+      padding-bottom: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+    .logo {
+      font-family: 'EB Garamond', serif;
+      font-weight: 600;
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+      color: #2d4b3c;
+      background: #e9e0d6;
+      padding: 0.1rem 1.2rem 0.2rem 1.2rem;
+      border-radius: 100px 20px 20px 100px;
+      display: inline-block;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .logo i { 
+      font-size: 1.5rem; 
+      color: #b48b6b; 
+      margin-right: 8px;
+      transform: rotate(-5deg);
+    }
+    .logo small {
+      font-size: 0.7rem;
+      font-weight: 400;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 1px;
+      color: #736b60;
+      margin-left: 8px;
+      text-transform: uppercase;
+    }
+    .nav {
+      display: flex;
+      gap: 2.2rem;
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: #4b4a44;
+      letter-spacing: 0.02em;
+      flex-wrap: wrap;
+    }
+    .nav a { 
+      padding: 0.4rem 0; 
+      border-bottom: 1px solid transparent;
+      transition: 0.2s;
+    }
+    .nav a:hover { border-bottom-color: #b48b6b; color: #1f2f26; }
+    .nav i { margin-right: 6px; opacity: 0.6; }
+
+    /* ----- navigation style (floating + breadcrumb) ----- */
+    .navigation-style {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: #eae2d9;
+      padding: 0.8rem 1.8rem;
+      border-radius: 60px;
+      margin: 1.2rem 0 2.8rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+    .nav-pills {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .nav-pills a {
+      background: transparent;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #3d3b36;
+      transition: 0.15s;
+      border: 1px solid transparent;
+    }
+    .nav-pills a:hover {
+      background: #fcf9f5;
+      border-color: #b48b6b;
+      color: #1f2f26;
+    }
+    .nav-pills i { margin-right: 6px; }
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6d665c;
+      letter-spacing: 0.3px;
+    }
+    .breadcrumb i { margin: 0 6px; }
+
+    /* ----- CATEGORIES page specific: gallery of topics, cards, featured ----- */
+    .categories-header {
+      margin-bottom: 2.5rem;
+    }
+    .categories-header h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: 3.4rem;
+      font-weight: 600;
+      line-height: 1.1;
+      color: #1f2f26;
+      letter-spacing: -0.02em;
+    }
+    .categories-header .subhead {
+      font-size: 1.2rem;
+      color: #5f5a51;
+      border-left: 6px solid #b48b6b;
+      padding-left: 1.5rem;
+      margin-top: 0.8rem;
+      max-width: 700px;
+    }
+
+    /* intro / filter bar */
+    .category-intro {
+      background: #f1ede7;
+      padding: 1.8rem 2.5rem;
+      border-radius: 2.2rem 0.6rem 2.2rem 0.6rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 8px solid #2d4b3c;
+    }
+    .category-intro p {
+      color: #2f2e2a;
+      line-height: 1.6;
+      max-width: 700px;
+    }
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      background: #eae2d9;
+      padding: 0.3rem 0.5rem;
+      border-radius: 60px;
+    }
+    .filter-tabs span {
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #3d3b36;
+      cursor: default;
+      background: transparent;
+      transition: 0.1s;
+    }
+    .filter-tabs span.active {
+      background: #2d4b3c;
+      color: #f1ede7;
+    }
+    .filter-tabs span:not(.active):hover { background: #d6cdc2; }
+
+    /* categories grid — 3 columns, cards */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0;
+    }
+    .category-card {
+      background: #fcf9f5;
+      border: 1px solid #e0d6cb;
+      border-radius: 2rem 0.6rem 2rem 0.6rem;
+      padding: 1.8rem 1.6rem 2rem;
+      transition: 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+      display: flex;
+      flex-direction: column;
+    }
+    .category-card:hover {
+      border-color: #b48b6b;
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+    }
+    .category-card .icon-wrap {
+      font-size: 2.4rem;
+      color: #2d4b3c;
+      background: #e9e0d6;
+      display: inline-flex;
+      width: 70px;
+      height: 70px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 60px 20px 60px 20px;
+      margin-bottom: 0.8rem;
+    }
+    .category-card h3 {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: #1f2f26;
+      margin-bottom: 0.3rem;
+    }
+    .category-card .meta {
+      font-size: 0.8rem;
+      color: #6d665c;
+      letter-spacing: 0.3px;
+      margin-bottom: 0.6rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .category-card .meta i { margin-right: 4px; }
+    .category-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #3d3b36;
+      flex: 1;
+    }
+    .category-card .card-footer {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #e0d6cb;
+      padding-top: 0.8rem;
+    }
+    .category-card .card-footer a {
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: #2d4b3c;
+      background: #eae2d9;
+      padding: 0.2rem 1.2rem;
+      border-radius: 40px;
+      transition: 0.15s;
+    }
+    .category-card .card-footer a:hover {
+      background: #2d4b3c;
+      color: #f1ede7;
+    }
+    .category-card .card-footer .count {
+      font-size: 0.8rem;
+      color: #6d665c;
+    }
+
+    /* featured category (full width highlight) */
+    .featured-category {
+      background: #f1ede7;
+      border: 1px solid #d0c5b8;
+      border-radius: 2.8rem 0.8rem 2.8rem 0.8rem;
+      padding: 2.2rem 2.8rem;
+      margin: 2.5rem 0 1.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.8rem;
+      border-left: 12px solid #b48b6b;
+    }
+    .featured-category .icon-big {
+      font-size: 3.2rem;
+      color: #2d4b3c;
+      background: #e9e0d6;
+      width: 80px;
+      height: 80px;
+      border-radius: 60px 20px 60px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .featured-category .featured-content {
+      flex: 2;
+    }
+    .featured-category .featured-content h2 {
+      font-family: 'EB Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #1f2f26;
+    }
+    .featured-category .featured-content p {
+      color: #3d3b36;
+      line-height: 1.6;
+    }
+    .featured-category .featured-tag {
+      background: #2d4b3c;
+      color: #f1ede7;
+      padding: 0.2rem 1.4rem;
+      border-radius: 60px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* footer roots (same as about/terms) */
+    .footer-roots {
+      margin-top: 4rem;
+      background: #eae2d9;
+      border-radius: 3rem 1rem 1.8rem 1.8rem;
+      padding: 2.8rem 2.5rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 2rem;
+      border-bottom: 8px solid #b48b6b;
+    }
+    .footer-roots h5 {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #1f2f26;
+      border-bottom: 2px dotted #b48b6b;
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.8rem;
+    }
+    .footer-roots ul { list-style: none; }
+    .footer-roots li { margin: 0.3rem 0; font-size: 0.9rem; color: #3d3b36; }
+    .footer-roots i { margin-right: 8px; color: #6d665c; width: 1.2rem; }
+    .footer-roots .copy {
+      grid-column: 1 / -1;
+      text-align: center;
+      border-top: 1px solid #d0c5b8;
+      padding-top: 1.5rem;
+      font-size: 0.8rem;
+      color: #5f5a51;
+    }
+    /* responsive */
+    @media (max-width: 880px) {
+      .container { padding: 1.5rem; }
+      .categories-grid { grid-template-columns: 1fr 1fr; }
+      .brand { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+      .nav { gap: 1rem; }
+      .featured-category { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .categories-grid { grid-template-columns: 1fr; }
+      .navigation-style { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+      .category-intro { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- brand identity + logo -->
+  <div class="brand">
+    <div class="logo">
+      <i class="fas fa-seedling"></i> Iverstone <small>Verdalis Forum</small>
+    </div>
+    <div class="nav">
+      <a href="index.html"><i class="fas fa-home"></i>Home</a>
+      <a href="about.html"><i class="fas fa-leaf"></i>About</a>
+      <a href="contact.html"><i class="fas fa-envelope"></i>Contact</a>
+      <a href="terms.html"><i class="fas fa-file-contract"></i>Terms</a>
+      <a href="privacy.html"><i class="fas fa-shield-alt"></i>Privacy</a>
+      <a href="categories.html" style="border-bottom-color:#b48b6b; color:#1f2f26;"><i class="fas fa-tags"></i>Categories</a>
+    </div>
+  </div>
+
+  <!-- navigation pills + breadcrumb -->
+  <div class="navigation-style">
+    <div class="nav-pills">
+      <a href="#"><i class="fas fa-tag"></i>All topics</a>
+      <a href="#"><i class="fas fa-tree"></i>Gardens</a>
+      <a href="#"><i class="fas fa-book"></i>Library</a>
+      <a href="#"><i class="fas fa-comments"></i>Dialogue</a>
+      <a href="#"><i class="fas fa-seedling"></i>Regenerative</a>
+    </div>
+    <div class="breadcrumb">
+      <i class="fas fa-home"></i> Home <i class="fas fa-chevron-right"></i> Categories
+    </div>
+  </div>
+
+  <!-- CATEGORIES HEADER -->
+  <div class="categories-header">
+    <h1>Categories &amp; groves</h1>
+    <div class="subhead">Navigate the living library — each category is a clearing where stories, wisdom, and conversations take root.</div>
+  </div>
+
+  <!-- intro + filter -->
+  <div class="category-intro">
+    <p><i class="fas fa-leaf" style="color:#b48b6b; margin-right:8px;"></i> Explore our thematic clusters. From ancient horticulture to digital permaculture, every thread weaves into the greater tapestry.</p>
+    <div class="filter-tabs">
+      <span class="active">All</span>
+      <span>New</span>
+      <span>Popular</span>
+      <span>Archive</span>
+    </div>
+  </div>
+
+  <!-- FEATURED CATEGORY (full width) -->
+  <div class="featured-category">
+    <div class="icon-big"><i class="fas fa-mountain-sun"></i></div>
+    <div class="featured-content">
+      <span class="featured-tag">featured grove</span>
+      <h2>Verdant Futures</h2>
+      <p>Deep dives into regenerative ecology, permaculture design, and the wisdom of indigenous land stewardship. This is our most active living library.</p>
+    </div>
+    <a href="#" style="background:#2d4b3c; color:#f1ede7; padding:0.4rem 1.8rem; border-radius:60px; font-weight:500; font-size:0.9rem;">Explore <i class="fas fa-arrow-right"></i></a>
+  </div>
+
+  <!-- CATEGORIES GRID (12 cards, rich variety) -->
+  <div class="categories-grid">
+    <!-- card 1 -->
+    <div class="category-card">
+      <div class="icon-wrap"><i class="fas fa-seedling"></i></div>
+      <h3>Horticulture</h3>
+      <div class="meta"><span><i class="fas fa-comment"></i> 43 threads</span> <span><i class="fas fa-user"></i> 12 active</span></div>
+      <p>From soil biology to pruning techniques — practical wisdom for every gardener.</p>
+      <div class="card-footer"><a href="#">View</a><span class="count"><i class="fas fa-arrow-right"></i></span></div>
+    </div>
+    <!-- card 2 -->
+    <div class="category-card">
+      <div class="icon-wrap"><i class="fas fa-tree"></i></div>
+      <h3>Forest lore</h3>
+      <div class="meta"><span><i class="fas fa-comment"></i> 28 threads</span> <span><i class="fas fa-user"></i> 8 active</span></div>
+      <p>Myths, medicines, and the silent language of woodlands.</p>
+      <div class="card-footer"><a href="#">View</a><span class="count"><i class="fas fa-arrow-right"></i></span></div>
+    </div>
+    <!-- card 3 -->
+    <div class="category-card">
+      <div class="icon-wrap"><i class="fas fa-hand-holding-heart"></i></div>
+      <h3>Community care</h3>
+      <div class="meta"><span><i class="fas fa-comment"></i> 67 threads</span> <span><i class="fas fa-user"></i> 24 active</span></div>
+      <p>Mutual aid, conflict resolution, and building resilient neighbourhoods.</p>
+      <div class="card-footer"><a href="#">View</a><span class="count"><i class="fas fa-arrow-right"></i></span></div>
+    </div>
+    <!-- card 4 -->
+    <div class="category-card">
+      <div class="icon-wrap"><i class="fas fa-book-open"></i></div>
+      <h3>Living library</h3>
+      <div class="meta"><span><i class="fas fa-comment"></i> 19 threads</span> <span><i class="fas fa-user"></i> 6 active</span></div>
+      <p>Archives of essays, poems, and oral histories from the Verdalis community.</p>
+      <div class="card-footer"><a href="#">View</a><span class="count"><i class="fas fa-arrow-right"></i></span></div>
+    </div>
+    <!-- card 5 -->
+    <div class="category-card">
+      <div class="icon-wrap"><i class="fas fa-water"></i></div>
+      <h3>Watersheds</h3>
+      <div class="meta"><span><i class="fas fa-comment"></i> 34 threads</span> <span><i class="fas fa-user"></i> 11 active</span></div>
+      <p>Rivers, rain gardens, and the hydrology of place.</p>
+      <div class="card-footer"><a href="#">View</a><span class="count"><i class="fas fa-arrow-right"></i></span></div>
+    </div>
+    <!-- card 6 -->
+    <div class="category-card">
+      <div class="icon-wrap"><i class="fas fa-seedling"></i></div>
+      <h3>Permaculture</h3>
+      <div class="meta"><span><i class="fas fa-comment"></i> 51 threads</span> <span><i class="fas fa-user"></i> 17 active</span></div>
+      <p>Design principles, guilds, and edible landscapes.</p>
+      <div class="card-footer"><a href="#">View</a><span class="count"><i class="fas fa-arrow-right"></i></span></div>
+    </div>
+    <!-- card 7 -->
+    <div class="category-card">
+      <div class="icon-wrap"><i class="fas fa-feather"></i></div>
+      <h3>Bird &amp; wing</h3>
+      <div class="meta"><span><i class="fas fa-comment"></i> 22 threads</span> <span><i class="fas fa-user"></i> 9 active</span></div>
+      <p>Ornithology, bird language, and the wisdom of flight.</p>
+      <div class="card-footer"><a href="#">View</a><span class="count"><i class="fas fa-arrow-right"></i></span></div>
+    </div>
+    <!-- card 8 -->
+    <div class="category-card">
+      <div class="icon-wrap"><i class="fas fa-mask"></i></div>
+      <h3>Heritage &amp; ritual</h3>
+      <div class="meta"><span><i class="fas fa-comment"></i> 16 threads</span> <span><i class="fas fa-user"></i> 5 active</span></div>
+      <p>Seasonal ceremonies, folk traditions, and ancestral practices.</p>
+      <div class="card-footer"><a href="#">View</a><span class="count"><i class="fas fa-arrow-right"></i></span></div>
+    </div>
+    <!-- card 9 -->
+    <div class="category-card">
+      <div class="icon-wrap"><i class="fas fa-microscope"></i></div>
+      <h3>Soil &amp; science</h3>
+      <div class="meta"><span><i class="fas fa-comment"></i> 38 threads</span> <span><i class="fas fa-user"></i> 14 active</span></div>
+      <p>Mycology, microbiology, and the invisible world beneath.</p>
+      <div class="card-footer"><a href="#">View</a><span class="count"><i class="fas fa-arrow-right"></i></span></div>
+    </div>
+    <!-- card 10 -->
+    <div class="category-card">
+      <div class="icon-wrap"><i class="fas fa-mountain"></i></div>
+      <h3>Mountain &amp; stone</h3>
+      <div class="meta"><span><i class="fas fa-comment"></i> 14 threads</span> <span><i class="fas fa-user"></i> 4 active</span></div>
+      <p>Geology, alpine ecology, and the spirit of high places.</p>
+      <div class="card-footer"><a href="#">View</a><span class="count"><i class="fas fa-arrow-right"></i></span></div>
+    </div>
+    <!-- card 11 -->
+    <div class="category-card">
+      <div class="icon-wrap"><i class="fas fa-hand-sparkles"></i></div>
+      <h3>Craft &amp; making</h3>
+      <div class="meta"><span><i class="fas fa-comment"></i> 29 threads</span> <span><i class="fas fa-user"></i> 10 active</span></div>
+      <p>Basketry, natural dyes, and the art of handwork.</p>
+      <div class="card-footer"><a href="#">View</a><span class="count"><i class="fas fa-arrow-right"></i></span></div>
+    </div>
+    <!-- card 12 -->
+    <div class="category-card">
+      <div class="icon-wrap"><i class="fas fa-users"></i></div>
+      <h3>Youth &amp; elder</h3>
+      <div class="meta"><span><i class="fas fa-comment"></i> 20 threads</span> <span><i class="fas fa-user"></i> 7 active</span></div>
+      <p>Intergenerational dialogue, mentoring, and shared wisdom.</p>
+      <div class="card-footer"><a href="#">View</a><span class="count"><i class="fas fa-arrow-right"></i></span></div>
+    </div>
+  </div>
+
+  <!-- footer note: community + call to action -->
+  <div style="background: #2d4b3c; color: #f1ede7; padding: 1.8rem 2.5rem; border-radius: 3rem 0.6rem 3rem 0.6rem; margin-top: 2.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem;">
+    <i class="fas fa-sitemap" style="font-size: 2.2rem; color: #b48b6b;"></i>
+    <p style="flex:2; line-height:1.6;"><strong>Explore the full living library.</strong> Every category is a gateway to stories, knowledge, and connection. Join the conversation.</p>
+    <a href="#" style="background: #b48b6b; color:#1f2f26; padding:0.3rem 2rem; border-radius:60px; font-weight:600;">Browse all</a>
+  </div>
+
+  <!-- FOOTER roots style -->
+  <div class="footer-roots">
+    <div>
+      <h5><i class="fas fa-seedling"></i> Iverstone</h5>
+      <ul>
+        <li>About</li>
+        <li>Contact</li>
+        <li>Editorial Policy</li>
+        <li>Authors</li>
+      </ul>
+    </div>
+    <div>
+      <h5><i class="fas fa-file-alt"></i> Legal</h5>
+      <ul>
+        <li>Privacy Policy</li>
+        <li>Terms &amp; Conditions</li>
+        <li>Cookie Policy</li>
+        <li>Disclaimer</li>
+      </ul>
+    </div>
+    <div>
+      <h5><i class="fas fa-sitemap"></i> Explore</h5>
+      <ul>
+        <li>Archive</li>
+        <li>Resources</li>
+        <li>FAQ</li>
+        <li>Sitemap</li>
+      </ul>
+    </div>
+    <div>
+      <h5><i class="fas fa-hand-holding-heart"></i> Verdalis</h5>
+      <ul>
+        <li>Living Library</li>
+        <li>Knowledge Hub</li>
+        <li>Forum</li>
+      </ul>
+    </div>
+    <div class="copy">
+      <i class="fas fa-crown" style="color:#b48b6b;"></i> © 2026 Iverstone Verdalis Forum — handcrafted with roots and stories.
+    </div>
+  </div>
+</div>
+</body>
+</html>

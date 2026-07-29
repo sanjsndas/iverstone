@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms · Iverstone Verdalis Forum</title>
+  <!-- premium typography: inter & garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <!-- font-awesome (minimal icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ----- reset & base (mirrored from about page) ----- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f7f3ed;
+      color: #2a2a27;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      padding: 2rem 1.5rem;
+    }
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      background: #fcf9f5;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.04);
+      border-radius: 2.5rem 2.5rem 1.5rem 1.5rem;
+      padding: 2.5rem 2.8rem;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; border-radius: 1.2rem; }
+    /* ----- brand identity : Iverstone Verdalis Forum ----- */
+    .brand {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #e0d6cb;
+      padding-bottom: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+    .logo {
+      font-family: 'EB Garamond', serif;
+      font-weight: 600;
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+      color: #2d4b3c;
+      background: #e9e0d6;
+      padding: 0.1rem 1.2rem 0.2rem 1.2rem;
+      border-radius: 100px 20px 20px 100px;
+      display: inline-block;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .logo i { 
+      font-size: 1.5rem; 
+      color: #b48b6b; 
+      margin-right: 8px;
+      transform: rotate(-5deg);
+    }
+    .logo small {
+      font-size: 0.7rem;
+      font-weight: 400;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 1px;
+      color: #736b60;
+      margin-left: 8px;
+      text-transform: uppercase;
+    }
+    .nav {
+      display: flex;
+      gap: 2.2rem;
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: #4b4a44;
+      letter-spacing: 0.02em;
+      flex-wrap: wrap;
+    }
+    .nav a { 
+      padding: 0.4rem 0; 
+      border-bottom: 1px solid transparent;
+      transition: 0.2s;
+    }
+    .nav a:hover { border-bottom-color: #b48b6b; color: #1f2f26; }
+    .nav i { margin-right: 6px; opacity: 0.6; }
+
+    /* ----- navigation style (floating + breadcrumb) ----- */
+    .navigation-style {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: #eae2d9;
+      padding: 0.8rem 1.8rem;
+      border-radius: 60px;
+      margin: 1.2rem 0 2.8rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+    .nav-pills {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .nav-pills a {
+      background: transparent;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #3d3b36;
+      transition: 0.15s;
+      border: 1px solid transparent;
+    }
+    .nav-pills a:hover {
+      background: #fcf9f5;
+      border-color: #b48b6b;
+      color: #1f2f26;
+    }
+    .nav-pills i { margin-right: 6px; }
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6d665c;
+      letter-spacing: 0.3px;
+    }
+    .breadcrumb i { margin: 0 6px; }
+
+    /* ----- TERMS PAGE specific: legal style with cards, sections, highlights ----- */
+    .terms-header {
+      margin-bottom: 2.5rem;
+    }
+    .terms-header h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: 3.4rem;
+      font-weight: 600;
+      line-height: 1.1;
+      color: #1f2f26;
+      letter-spacing: -0.02em;
+    }
+    .terms-header .subhead {
+      font-size: 1.2rem;
+      color: #5f5a51;
+      border-left: 6px solid #b48b6b;
+      padding-left: 1.5rem;
+      margin-top: 0.8rem;
+      max-width: 700px;
+    }
+    .terms-intro {
+      background: #f1ede7;
+      padding: 2rem 2.5rem;
+      border-radius: 2.2rem 0.6rem 2.2rem 0.6rem;
+      margin-bottom: 2.5rem;
+      border-left: 8px solid #2d4b3c;
+    }
+    .terms-intro p {
+      color: #2f2e2a;
+      line-height: 1.7;
+    }
+    .terms-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin: 2.5rem 0;
+    }
+    .terms-card {
+      background: #fcf9f5;
+      border: 1px solid #e0d6cb;
+      border-radius: 1.8rem 0.6rem 1.8rem 0.6rem;
+      padding: 1.8rem 2rem;
+      transition: 0.2s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.01);
+    }
+    .terms-card:hover { border-color: #b48b6b; transform: translateY(-4px); }
+    .terms-card i {
+      font-size: 1.8rem;
+      color: #2d4b3c;
+      background: #e9e0d6;
+      padding: 0.6rem;
+      border-radius: 60px 20px 60px 20px;
+      margin-bottom: 0.8rem;
+    }
+    .terms-card h3 {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #1f2f26;
+      margin-bottom: 0.4rem;
+    }
+    .terms-card p, .terms-card li {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #3d3b36;
+    }
+    .terms-card ul {
+      padding-left: 1.2rem;
+      margin-top: 0.4rem;
+    }
+    .terms-card ul li { margin: 0.3rem 0; }
+    .terms-full {
+      background: #fcf9f5;
+      border: 1px solid #e0d6cb;
+      border-radius: 2.2rem 0.4rem 2.2rem 0.4rem;
+      padding: 2.5rem 3rem;
+      margin: 2.5rem 0;
+    }
+    .terms-full h2 {
+      font-family: 'EB Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #1f2f26;
+      border-bottom: 2px dotted #b48b6b;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.2rem;
+    }
+    .terms-full h3 {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #1f2f26;
+      margin-top: 1.8rem;
+      margin-bottom: 0.3rem;
+    }
+    .terms-full p {
+      line-height: 1.8;
+      margin: 0.8rem 0;
+      color: #35332f;
+    }
+    .terms-full ul, .terms-full ol {
+      margin: 0.8rem 0 1rem 1.8rem;
+      color: #35332f;
+    }
+    .terms-full li { margin: 0.4rem 0; }
+    .highlight-box {
+      background: #eae2d9;
+      padding: 1.2rem 2rem;
+      border-radius: 1.6rem 0.4rem 1.6rem 0.4rem;
+      margin: 1.2rem 0;
+      border-left: 6px solid #b48b6b;
+    }
+    .highlight-box strong { color: #1f2f26; }
+    .terms-footer-note {
+      background: #2d4b3c;
+      color: #f1ede7;
+      padding: 1.8rem 2.5rem;
+      border-radius: 3rem 0.6rem 3rem 0.6rem;
+      margin-top: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .terms-footer-note i { font-size: 2.2rem; color: #b48b6b; }
+    .terms-footer-note p { flex: 2; font-size: 1rem; line-height: 1.6; }
+    .btn-ivy {
+      display: inline-block;
+      background: #2d4b3c;
+      color: #f1ede7;
+      padding: 0.3rem 1.8rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      border: 1px solid #2d4b3c;
+      transition: 0.2s;
+    }
+    .btn-ivy:hover { background: #b48b6b; border-color: #b48b6b; }
+
+    /* ----- footer roots (same as about) ----- */
+    .footer-roots {
+      margin-top: 4rem;
+      background: #eae2d9;
+      border-radius: 3rem 1rem 1.8rem 1.8rem;
+      padding: 2.8rem 2.5rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 2rem;
+      border-bottom: 8px solid #b48b6b;
+    }
+    .footer-roots h5 {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #1f2f26;
+      border-bottom: 2px dotted #b48b6b;
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.8rem;
+    }
+    .footer-roots ul { list-style: none; }
+    .footer-roots li { margin: 0.3rem 0; font-size: 0.9rem; color: #3d3b36; }
+    .footer-roots i { margin-right: 8px; color: #6d665c; width: 1.2rem; }
+    .footer-roots .copy {
+      grid-column: 1 / -1;
+      text-align: center;
+      border-top: 1px solid #d0c5b8;
+      padding-top: 1.5rem;
+      font-size: 0.8rem;
+      color: #5f5a51;
+    }
+    /* responsive */
+    @media (max-width: 880px) {
+      .container { padding: 1.5rem; }
+      .terms-grid { grid-template-columns: 1fr; }
+      .brand { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+      .nav { gap: 1rem; }
+    }
+    @media (max-width: 550px) {
+      .navigation-style { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+      .terms-full { padding: 1.5rem; }
+      .footer-roots { grid-template-columns: 1fr 1fr; }
+      .terms-footer-note { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- brand identity + logo -->
+  <div class="brand">
+    <div class="logo">
+      <i class="fas fa-seedling"></i> Iverstone <small>Verdalis Forum</small>
+    </div>
+    <div class="nav">
+      <a href="index.html"><i class="fas fa-home"></i>Home</a>
+      <a href="about.html"><i class="fas fa-leaf"></i>About</a>
+      <a href="contact.html"><i class="fas fa-envelope"></i>Contact</a>
+      <a href="terms.html" style="border-bottom-color:#b48b6b; color:#1f2f26;"><i class="fas fa-file-contract"></i>Terms</a>
+      <a href="privacy.html"><i class="fas fa-shield-alt"></i>Privacy</a>
+      <a href="categories.html"><i class="fas fa-tags"></i>Categories</a>
+    </div>
+  </div>
+
+  <!-- navigation pills + breadcrumb -->
+  <div class="navigation-style">
+    <div class="nav-pills">
+      <a href="#"><i class="fas fa-gavel"></i>Terms</a>
+      <a href="#"><i class="fas fa-scale-balanced"></i>Legal</a>
+      <a href="#"><i class="fas fa-handshake"></i>User agreement</a>
+      <a href="#"><i class="fas fa-book-open"></i>Policies</a>
+    </div>
+    <div class="breadcrumb">
+      <i class="fas fa-home"></i> Home <i class="fas fa-chevron-right"></i> Terms
+    </div>
+  </div>
+
+  <!-- TERMS HEADER -->
+  <div class="terms-header">
+    <h1>Terms &amp; conditions</h1>
+    <div class="subhead">The legal framework that sustains our living library — rooted in fairness, clarity, and mutual care.</div>
+  </div>
+
+  <!-- intro block -->
+  <div class="terms-intro">
+    <p><i class="fas fa-quote-left" style="color:#b48b6b; margin-right:8px;"></i> By using the Iverstone Verdalis Forum, you agree to tend this digital garden with respect, honesty, and a spirit of regeneration. These terms are designed to protect our community, our stories, and the soil of our shared knowledge. <i class="fas fa-quote-right" style="color:#b48b6b; margin-left:8px;"></i></p>
+    <p style="margin-top:0.8rem;"><strong>Last updated:</strong> 21 July 2026</p>
+  </div>
+
+  <!-- TERMS GRID (4 key areas) -->
+  <div class="terms-grid">
+    <div class="terms-card">
+      <i class="fas fa-seedling"></i>
+      <h3>Intellectual Soil</h3>
+      <p>All content — essays, images, and stories — remains the property of the creator. By posting, you grant the forum a non‑exclusive license to preserve and share your work within the living library.</p>
+      <ul>
+        <li>You retain full copyright.</li>
+        <li>We may archive for preservation.</li>
+        <li>Proper attribution is always given.</li>
+      </ul>
+    </div>
+    <div class="terms-card">
+      <i class="fas fa-hand-holding-heart"></i>
+      <h3>Community conduct</h3>
+      <p>We cultivate a space of kindness and curiosity. Harassment, misinformation, or commercial spamming is not tolerated.</p>
+      <ul>
+        <li>Be respectful and open‑minded.</li>
+        <li>Cite sources when sharing knowledge.</li>
+        <li>Report concerns to our stewards.</li>
+      </ul>
+    </div>
+    <div class="terms-card">
+      <i class="fas fa-tree"></i>
+      <h3>Regenerative use</h3>
+      <p>Our content is meant to inspire and educate. You may quote or reference forum materials for non‑commercial purposes, provided you credit the source.</p>
+      <ul>
+        <li>Personal, educational use is encouraged.</li>
+        <li>Commercial use requires explicit permission.</li>
+        <li>We support open knowledge.</li>
+      </ul>
+    </div>
+    <div class="terms-card">
+      <i class="fas fa-shield-alt"></i>
+      <h3>Privacy &amp; data</h3>
+      <p>Your personal data is treated with the same care as a heirloom seed. We never sell or misuse your information. See our <a href="privacy.html" style="color:#2d4b3c; text-decoration:underline;">Privacy Policy</a> for details.</p>
+      <ul>
+        <li>Data is anonymised where possible.</li>
+        <li>You can request deletion at any time.</li>
+        <li>We use minimal cookies.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FULL TERMS (long‑form legal style with sections) -->
+  <div class="terms-full">
+    <h2>Full terms of use</h2>
+    <p>Welcome to the Iverstone Verdalis Forum. These terms govern your use of our digital platform, community spaces, and any services we offer. By accessing or using the forum, you agree to be bound by these terms. If you do not agree, please refrain from using the forum.</p>
+
+    <h3>1. Acceptance of terms</h3>
+    <p>By creating an account or participating in the forum, you accept these terms and our <a href="privacy.html" style="color:#2d4b3c; text-decoration:underline;">Privacy Policy</a>. We may update these terms from time to time; we will notify you of significant changes via the forum or email.</p>
+
+    <h3>2. User accounts</h3>
+    <p>You are responsible for maintaining the confidentiality of your account and password. You agree to provide accurate and current information. Accounts are personal and non‑transferable.</p>
+    <ul>
+      <li>You must be at least 16 years old to register.</li>
+      <li>You may not use the forum for unlawful purposes.</li>
+      <li>We reserve the right to suspend accounts that violate these terms.</li>
+    </ul>
+
+    <h3>3. Content and intellectual property</h3>
+    <p>The forum contains content created by users, stewards, and contributors. All rights remain with the original creators. When you post content, you grant the forum a worldwide, royalty‑free, and non‑exclusive license to display, store, and distribute your content for the purpose of operating and preserving the living library.</p>
+    <div class="highlight-box">
+      <strong><i class="fas fa-leaf" style="color:#2d4b3c;"></i> Attribution:</strong> We always credit authors and creators. You may request removal of your content at any time.
+    </div>
+
+    <h3>4. Prohibited conduct</h3>
+    <p>To maintain a healthy community, the following are strictly prohibited:</p>
+    <ul>
+      <li>Harassment, abuse, or threats against any individual or group.</li>
+      <li>Posting false, misleading, or defamatory information.</li>
+      <li>Commercial advertising without prior approval.</li>
+      <li>Uploading malware or disrupting the forum's operation.</li>
+      <li>Impersonating other members or staff.</li>
+    </ul>
+
+    <h3>5. Disclaimers and limitations</h3>
+    <p>The forum is provided "as is" and "as available." We do not guarantee uninterrupted service or the accuracy of user‑generated content. We are not liable for any direct, indirect, or consequential damages arising from your use of the forum.</p>
+    <div class="highlight-box">
+      <strong><i class="fas fa-exclamation-triangle" style="color:#b48b6b;"></i> Gardening advice:</strong> Information shared on the forum is for educational and inspirational purposes. Always consult local experts before implementing practices.
+    </div>
+
+    <h3>6. Termination</h3>
+    <p>We may terminate or suspend your account if you violate these terms. You may also delete your account at any time. Upon termination, your content may be removed or archived according to our preservation policy.</p>
+
+    <h3>7. Governing law</h3>
+    <p>These terms are governed by the laws of the Iverstone valley (fictional jurisdiction). Any disputes shall be resolved through good‑faith negotiation, and if necessary, through mediation in the spirit of the Verdalis community.</p>
+
+    <h3>8. Contact</h3>
+    <p>If you have questions about these terms, please <a href="contact.html" style="color:#2d4b3c; text-decoration:underline;">contact our stewardship team</a>. We are here to help.</p>
+
+    <p style="margin-top:1.5rem; font-style:italic; border-top:1px solid #e0d6cb; padding-top:1.5rem;"><i class="fas fa-quote-left" style="color:#b48b6b;"></i> These terms are written in plain language, because we believe that legal agreements should be as transparent as the stories we share. <i class="fas fa-quote-right" style="color:#b48b6b;"></i></p>
+  </div>
+
+  <!-- footer note: acceptance + CTA -->
+  <div class="terms-footer-note">
+    <i class="fas fa-handshake"></i>
+    <p><strong>By using the forum, you accept these terms.</strong> We encourage you to read them carefully. Together, we cultivate a space that honours both the law and the land.</p>
+    <a href="#" class="btn-ivy" style="background:#b48b6b; border-color:#b48b6b;"><i class="fas fa-check-circle"></i> I agree</a>
+  </div>
+
+  <!-- FOOTER roots style -->
+  <div class="footer-roots">
+    <div>
+      <h5><i class="fas fa-seedling"></i> Iverstone</h5>
+      <ul>
+        <li>About</li>
+        <li>Contact</li>
+        <li>Editorial Policy</li>
+        <li>Authors</li>
+      </ul>
+    </div>
+    <div>
+      <h5><i class="fas fa-file-alt"></i> Legal</h5>
+      <ul>
+        <li>Privacy Policy</li>
+        <li>Terms &amp; Conditions</li>
+        <li>Cookie Policy</li>
+        <li>Disclaimer</li>
+      </ul>
+    </div>
+    <div>
+      <h5><i class="fas fa-sitemap"></i> Explore</h5>
+      <ul>
+        <li>Archive</li>
+        <li>Resources</li>
+        <li>FAQ</li>
+        <li>Sitemap</li>
+      </ul>
+    </div>
+    <div>
+      <h5><i class="fas fa-hand-holding-heart"></i> Verdalis</h5>
+      <ul>
+        <li>Living Library</li>
+        <li>Knowledge Hub</li>
+        <li>Forum</li>
+      </ul>
+    </div>
+    <div class="copy">
+      <i class="fas fa-crown" style="color:#b48b6b;"></i> © 2026 Iverstone Verdalis Forum — handcrafted with roots and stories.
+    </div>
+  </div>
+</div>
+</body>
+</html>
